@@ -53,4 +53,7 @@ site/
 
 google_ads_token.json
 
-uv.lock
+uv.lockgoogle-ads-sa-key.json
+client_secrets.json
+google_ads_token.json
+.env

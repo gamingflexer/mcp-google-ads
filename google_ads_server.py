@@ -1472,5 +1472,11 @@ async def list_resources(
     return await run_gaql(customer_id, query)
 
 if __name__ == "__main__":
-    # Start the MCP server on stdio transport
-    mcp.run(transport="stdio")
+    port = os.environ.get("PORT")
+    if port:
+        mcp.settings.host = "0.0.0.0"
+        mcp.settings.port = int(port)
+        mcp.settings.transport_security.enable_dns_rebinding_protection = False
+        mcp.run(transport="sse")
+    else:
+        mcp.run(transport="stdio")
